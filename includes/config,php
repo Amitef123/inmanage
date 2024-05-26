@@ -1,6 +1,0 @@
-<?php
-	$DB_serverName = "localhost";
-	$DB_serverUsername = "root";
-	$DB_serverPassword = "";
-	$DB_dbName = "inManage";
-?>

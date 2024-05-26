@@ -5,6 +5,7 @@
         private	$serverPassword;
         private $dbName;
         private $con;
+        private static $postsId=0;
         
         function __construct($sName, $sUsername, $sPassword, $dbN){
             $this->serverName = $sName;
@@ -53,6 +54,50 @@
                 die("Query error: " . $this->con->error);
             return true;
         }
+
+        function createTable($query){
+            $result= $this->con->query($query);
+            if(!$result)
+                die("Query error: " . $this->con->error);
+            return true;
+        }
+
+        function insertUser($userId,$name, $email, $status){
+
+            if($this->userExists($userId))
+                return;
+            $query = "INSERT INTO `users` ( `userId` , `name`, `email`, `status`) VALUES ('".$userId."','".$name."','".$email."','".$status."')";
+            $this->insert($query);
+        }
+
+        function insertPost($id=0,$userId, $title, $content, $status){
+            if($id==0&&self::$postsId+1<$id)
+                $id=self::$postsId+1;
+            if(!$this->userExists($userId) || $this->postsExists($id))
+                return;
+			$query = "INSERT INTO `posts` (`id`,`userId`, `title`, `content`, `status`) VALUES ('".$id."','".$userId."','".$title."','".$content."','".$status."')";
+			if($this->insert($query)){
+                self::$postsId++;
+            }
+		}
+
+        function userExists($userId){
+            $query = "SELECT * FROM `users` WHERE `userId` = '".$userId."'";
+            $result = $this->select($query);
+            if(count($result) > 0)
+                return true;
+            return false;
+        }
+
+        function postsExists($postId){
+            $query = "SELECT * FROM `posts` WHERE `id` = '".$postId."'";
+            $result = $this->select($query);
+            if(count($result) > 0)
+                return true;
+            return false;
+        }
+
+
 
 
     }
