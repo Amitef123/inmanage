@@ -5,7 +5,7 @@
         die("Error fetching photo");
     }
     
-    if(!file_put_contents(__DIR__."/../images/profilePic.jpg", $photoData)){
+    if(!file_put_contents(__DIR__."/../$PHOTO_PATH", $photoData)){
         die ("Error saving photo");
     }
 ?>

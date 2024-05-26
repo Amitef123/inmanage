@@ -1,7 +1,5 @@
 <?php
-
-    
-   
+    $db =new Database($DB_serverName, $DB_serverUsername, $DB_serverPassword, $DB_dbName);
     $usersData=getDataFromSite($USERS_URL);
     $postsData=getDataFromSite($POSTS_URL);
     createTables($db);
@@ -48,5 +46,7 @@
             `status` INT NOT NULL , 
             PRIMARY KEY (`id`))";
         $db->createTable($postSql);
+     
     }
+    $db->close();
 ?>

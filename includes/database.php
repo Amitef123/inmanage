@@ -97,10 +97,17 @@
             return false;
         }
 
+        function showPosts(){
+            $query="SELECT * FROM users JOIN posts ON users.userId=posts.userId AND users.status=1 ORDER BY posts.id";
+            return $this->select($query);
+        }
 
+        function close(){
+            $this->con->close();
+        }
 
 
     }
-    $db =new Database($DB_serverName, $DB_serverUsername, $DB_serverPassword, $DB_dbName);
+   
 
 ?>
