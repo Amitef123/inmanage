@@ -101,4 +101,6 @@
 
 
     }
+    $db =new Database($DB_serverName, $DB_serverUsername, $DB_serverPassword, $DB_dbName);
+
 ?>

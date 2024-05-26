@@ -1,9 +1,7 @@
 <?php
-    include('./includes/config.php');
-	include('./includes/database.php');
-    
-    $db =new Database($DB_serverName, $DB_serverUsername, $DB_serverPassword, $DB_dbName);
 
+    
+   
     $usersData=getDataFromSite($USERS_URL);
     $postsData=getDataFromSite($POSTS_URL);
     createTables($db);
