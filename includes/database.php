@@ -75,7 +75,6 @@
             $query .= "FROM ".$tableName." ";
 
             foreach ($join as $joinItem) {
-                echo $joinItem['table']."<br>";
                 if (isset($joinItem['table']) && isset($joinItem['condition'])) {
                     $joinCondition = is_array($joinItem['condition']) ? implode(" AND ", $joinItem['condition']) : $joinItem['condition'];
                     $query .= "JOIN " . $joinItem['table'] . " ON " . $joinCondition . " ";
@@ -91,7 +90,6 @@
                 $query .= "GROUP BY " . $group . " ";
             }
             try{
-                // echo $query."<br>";
                 $result = $this->con->query($query);
                 $rows = [];
                 while ($row = $result->fetch_assoc()) {
