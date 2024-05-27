@@ -1,6 +1,6 @@
 <?php
     $service=new DBService();
-    $posts = $service->showPosts();
+    $posts = $service->showBirthdayPosts();
     if(count($posts)==0){
         echo "No posts found";
         return;
