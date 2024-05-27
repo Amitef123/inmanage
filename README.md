@@ -22,3 +22,5 @@ This assignment, designed for an interview with Inmanage, is based on PHP and SQ
 2. Clone this repository:
    ```bash
    git clone https://github.com/Amitef123/inmanage.git
+3. Change the server variables in includes/config.php to fit your database.
+4. Run index.php
