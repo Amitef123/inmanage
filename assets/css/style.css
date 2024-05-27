@@ -28,7 +28,7 @@ body {
 
 .post {
     display: flex;
-    width: 50%;
+    width: 60%;
     /* max-height: 80vh; */
     min-height: 320px;
     flex-direction: column;
@@ -84,7 +84,7 @@ body {
 }
 
 .tab-container {
-    width: 500px;
+    /* width: 500px; */
     margin: 0 auto;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
@@ -110,4 +110,34 @@ body {
   .tab-button.active {
     background-color: #ac2121;
   }
+
+  table {
+    width: 90%;
+    min-width: 500px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th {
+
+    background-color: #2c3e50;
+    color: #fff;
+    font-weight: 500;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #e6e6e6;
+}
   

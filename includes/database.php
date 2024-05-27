@@ -22,9 +22,9 @@
         }
         
         function create($tableName,$colums){
-            $query = "CREATE TABLE IF NOT EXISTS `".$tableName."` (";
+            $query = "CREATE TABLE IF NOT EXISTS ".$tableName." (";
             foreach($colums as $column){
-                $query .= "`" . $column['name'] . "` " . $column['type'] . " " . (isset($column['extra']) ? $column['extra'] : '') . ",";
+                $query .= " " . $column['name'] . " " . $column['type'] . " " . (isset($column['extra']) ? $column['extra'] : '') . ",";
             }
             $query = substr($query, 0, -1);
             $query .= ")";
@@ -62,17 +62,17 @@
             }
         }
 
-        function select($tableName,$columns,$condition="",$order="", $join = []){
+        function select($tableName,$columns,$condition="",$order="", $join = [],$group=""){
             $query = "SELECT ";
             if(count($columns) == 0){
                 $query .= "* ";
             }else{
                 foreach($columns as $column){
-                    $query .= "`" . $column . "`,";
+                    $query .= " " . $column . " ,";
                 }
                 $query = substr($query, 0, -1) . " ";
             }
-            $query .= "FROM `".$tableName."` ";
+            $query .= "FROM ".$tableName." ";
 
             foreach ($join as $joinItem) {
                 echo $joinItem['table']."<br>";
@@ -87,7 +87,11 @@
             if($order != ""){
                 $query .= "ORDER BY " . $order . " ";
             }
+            if($group != ""){
+                $query .= "GROUP BY " . $group . " ";
+            }
             try{
+                // echo $query."<br>";
                 $result = $this->con->query($query);
                 $rows = [];
                 while ($row = $result->fetch_assoc()) {
@@ -161,7 +165,7 @@
         }
         return $rows;
     }
-
+    //Execute a SELECT query specified by the provided string.
     function selectByQuery($query){
         $result = $this->con->query($query);
         $rows = [];

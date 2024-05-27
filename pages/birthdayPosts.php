@@ -18,4 +18,6 @@
         echo "<p>Date: ".$post['date']."</p>";
         echo "</div>";
     }
+
+    $service->close();
 ?>

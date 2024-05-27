@@ -21,6 +21,7 @@
  		 <div class="tab-buttons">
     	<a href="?tab=1" class="tab-button">All posts</a>
     	<a href="?tab=2" class="tab-button">Birthday</a>
+		<a href="?tab=3" class="tab-button">Table Sum</a>
   	</div>
   	<div class="container">
     <?php
@@ -37,7 +38,9 @@
       case 2:
         include './pages/birthdayPosts.php';
         break;
-   
+	case 3:
+		include './pages/tableSum.php';
+		break;
       default:
         echo 'Invalid tab';
     }
